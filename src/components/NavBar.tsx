@@ -1,11 +1,10 @@
 import React from "react";
 import codeIcon from "../assets/images/codeDuo.png";
 import { Box } from "@mui/material";
-import theme from "../styles/theme";
 
 function NavBar() {
   return (
-    <Box position="sticky" sx={{ backgroundColor: "rgb(133, 179, 219)" }}>
+    <Box position={"fixed"} width="100%" sx={{ backgroundColor: "rgb(133, 179, 219)" }} zIndex={1}>
       <Box
         color={"whitesmoke"}
         display="flex"
