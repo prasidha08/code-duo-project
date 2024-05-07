@@ -1,21 +1,15 @@
-import React from "react";
+import { Typography } from "@mui/material";
 import codeIcon from "../assets/images/codeDuo.png";
-import { Box } from "@mui/material";
+import { ImageLogoWrapper, Nav } from "../styles/styledComponent/styled";
 
 function NavBar() {
   return (
-    <Box position={"fixed"} width="100%" sx={{ backgroundColor: "rgb(133, 179, 219)" }} zIndex={1}>
-      <Box
-        color={"whitesmoke"}
-        display="flex"
-        alignItems="center"
-        width="96%"
-        margin="auto"
-      >
+    <Nav>
+      <ImageLogoWrapper>
         <img src={codeIcon} alt="image" height={50} />
-        <h3>Code Duo</h3>
-      </Box>
-    </Box>
+        <Typography variant="h1">Code Duo</Typography>
+      </ImageLogoWrapper>
+    </Nav>
   );
 }
 
