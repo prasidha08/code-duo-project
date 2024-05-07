@@ -1,5 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { SpellResult } from "../model/spell";
+import {
+  useMutation,
+  useQueries,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { Spell, SpellResult } from "../model/spell";
 import { instance } from "../network";
 import { SPELL_URL } from "../url/backend";
 
@@ -39,7 +44,7 @@ export const useGetSpellsByURL = (index: string) => {
 export const useGetFavouriteSpells = () => {
   return useQuery({
     queryKey: [UNIQUE_KEYS.FAVOURITE],
-    queryFn: () => {
+    queryFn: (): Spell[] => {
       const favouriteSpell = localStorage.getItem(UNIQUE_KEYS.FAVOURITE);
       return JSON.parse(favouriteSpell ?? "");
     },
@@ -47,6 +52,33 @@ export const useGetFavouriteSpells = () => {
 };
 
 // Add fourite ids to local storage
-export const addToFavouriteToLocalStorage = (favouriteIds: string[]) => {
-  localStorage.setItem(UNIQUE_KEYS.FAVOURITE, JSON.stringify(favouriteIds));
+export const addToFavouriteToLocalStorage = async (
+  favouriteSpells: Spell[]
+) => {
+  localStorage.setItem(UNIQUE_KEYS.FAVOURITE, JSON.stringify(favouriteSpells));
+  return null;
+};
+
+export const useAddToFavouriteToLocalStorage = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (spells: Spell[]) => addToFavouriteToLocalStorage(spells),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [UNIQUE_KEYS.FAVOURITE] });
+    },
+  });
+};
+
+// fetch multiple spells by ids
+
+export const useGetMultipleSpellsByIds = (ids: string[]) => {
+  return useQueries({
+    queries: ids.map((id) => {
+      return {
+        queryKey: [UNIQUE_KEYS.SPELL, id],
+        queryFn: () => getSpellsByURL(id),
+      };
+    }),
+  });
 };
