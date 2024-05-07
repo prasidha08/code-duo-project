@@ -36,3 +36,5 @@ let theme = createTheme({
 });
 
 export default theme;
+
+export const whitesmoke = "#F5F5F5";
