@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import codeIcon from "../assets/images/codeDuo.png";
 import { ImageLogoWrapper, Nav } from "../styles/styledComponent/styled";
 
-function NavBar() {
+export default function NavBar() {
   return (
     <Nav>
       <ImageLogoWrapper>
@@ -12,5 +12,3 @@ function NavBar() {
     </Nav>
   );
 }
-
-export default NavBar;
