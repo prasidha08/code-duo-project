@@ -1,7 +1,7 @@
-import { Chip, Divider, Stack, Typography } from "@mui/material";
+import * as React from "react";
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
-import * as React from "react";
+import { Chip, Divider, Stack, Typography } from "@mui/material";
 import {
   useAddToFavouriteToLocalStorage,
   useGetFavouriteSpells,
@@ -14,12 +14,12 @@ import {
   Column,
   SchoolText,
 } from "../styles/styledComponent/styled";
+import { Spell } from "../model/spell";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import SchoolIcon from "@mui/icons-material/School";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { Spell } from "../model/spell";
 
 type MaxWidthDialogProps = {
   spellIndexToOpenDialog: string;
