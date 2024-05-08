@@ -2,6 +2,7 @@ import { Box, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useGetSpellsByURL } from "../api/spell";
 import { CardWrapper } from "../styles/styledComponent/styled";
+import { CustomSkeletion } from "../reusableComponent/SkeletonCard";
 
 type SpellCardProps = {
   index: string;
@@ -12,7 +13,7 @@ export default function SpellCard({ index, handleClickOpen }: SpellCardProps) {
   const { data, isPending } = useGetSpellsByURL(index);
 
   if (isPending) {
-    return null;
+    return <CustomSkeletion />;
   }
 
   return (
@@ -38,6 +39,5 @@ export default function SpellCard({ index, handleClickOpen }: SpellCardProps) {
         </Button>
       </Box>
     </CardWrapper>
-    // </Grid>
   );
 }

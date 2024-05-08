@@ -16,7 +16,9 @@ export default function Main() {
       <Divider>
         <Typography variant="h1">Spell Card</Typography>
       </Divider>
+
       <ScrollableTabs value={value} handleChange={handleChange} />
+
       <SpellLists value={value} />
     </Column>
   );
