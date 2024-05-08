@@ -38,10 +38,6 @@ export const Column = styled.div<ColumnProps>`
   gap: ${(props) => props.gap}em;
 `;
 
-export const FavouriteCard = styled.div`
-  display: flex;
-`;
-
 export const StyledIconButton = styled(IconButton)`
   color: ${palette.primary.main};
 `;
@@ -60,13 +56,12 @@ export const ImageLogoWrapper = styled(Box)`
   align-items: center;
   color: ${whitesmoke};
   width: 96%;
-  padding:10px;
+  padding: 10px;
   margin: auto;
 `;
 
 // Grid
 export const Grid = styled.div`
-  min-height: 300px;
   display: grid;
   flex-wrap: wrap;
   gap: 2em;
@@ -87,4 +82,13 @@ export const SchoolText = styled(Box)`
   alignitems: "center";
   gap: 10px;
   margin-top: 1em;
+`;
+
+export const Div = styled.div`
+  display: flex;
+  height: 258px;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 `;

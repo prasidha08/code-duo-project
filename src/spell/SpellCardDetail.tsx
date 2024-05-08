@@ -30,7 +30,7 @@ export default function SpellDetailComponent({
   spellIndexToOpenDialog,
   handleClose,
 }: MaxWidthDialogProps) {
-  const { data, isPending } = useGetSpellsByURL(spellIndexToOpenDialog);
+  const { data } = useGetSpellsByURL(spellIndexToOpenDialog);
 
   const { data: favouriteSpells, isPending: isFavouritePending } =
     useGetFavouriteSpells();
@@ -122,7 +122,7 @@ export default function SpellDetailComponent({
 
           <SchoolText>
             <SchoolIcon color="primary" />
-            
+
             <Typography fontWeight={"bold"}>{school?.name}</Typography>
           </SchoolText>
 

@@ -5,9 +5,10 @@ import SpellDetailComponent from "./SpellCardDetail";
 import SkeletonCard from "../reusableComponent/SkeletonCard";
 import CommonSpellCard from "../reusableComponent/CommonSpellCard";
 import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
+import ErrorBoundary, { TYPE } from "../error/ErrorBoundary";
 
 function SpellLists({ value }: { value: string }) {
-  const { data, isPending: isAllSpellsPending } = useGetAllSpells();
+  const { data, isPending: isAllSpellsPending, isError } = useGetAllSpells();
 
   const { data: favouriteSpellsList } = useGetFavouriteSpells();
 
@@ -37,12 +38,14 @@ function SpellLists({ value }: { value: string }) {
     return <SkeletonCard />;
   }
 
+  if (isError) {
+    return <ErrorBoundary type={TYPE.INTERNAL_SERVER} />;
+  }
+
   return (
     <>
       {filteredSpellByName.length === 0 && !isAllSpellsPending && (
-        <Typography align="center" variant="h1">
-          No data found !
-        </Typography>
+        <ErrorBoundary fallback="No Data Available!" type={TYPE.NOT_FOUND} />
       )}
 
       <CommonSpellCard
