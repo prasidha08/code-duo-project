@@ -72,3 +72,13 @@ export const Grid = styled.div`
   gap: 2em;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `;
+
+export const CardWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  background-color: ${whitesmoke};
+  gap: 1em;
+  padding: 2em;
+  box-shadow: 1px 2px 3px ${theme.palette.primary.main};
+  
+`;
