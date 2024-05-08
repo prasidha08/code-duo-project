@@ -88,15 +88,15 @@ export default function SpellDetailComponent({
         <CardContainer>
           <Row>
             <Box>
-              <Typography variant="body1">Level {level}</Typography>
-
-              <Typography color="primary" variant="h2">
+              <Typography color="primary" variant="h1">
                 {name}
               </Typography>
 
               <Typography variant="body1">
                 {duration} duration, {range} range
               </Typography>
+
+              <Typography variant="body2">Level {level}</Typography>
             </Box>
 
             <Box alignSelf="flex-start">

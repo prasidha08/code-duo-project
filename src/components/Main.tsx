@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SpellLists from "../spell/SpellLists";
-import { Box, Divider, Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import ScrollableTabs, { alphateIndex } from "./Tabs";
 import { Column } from "../styles/styledComponent/styled";
 

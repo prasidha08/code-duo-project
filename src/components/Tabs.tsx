@@ -1,9 +1,8 @@
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
 import { whitesmoke } from "../styles/theme";
-
 type ScrollableTabsButtonForceProps = {
   value: string;
   handleChange: (_: React.SyntheticEvent, newValue: number) => void;
