@@ -5,7 +5,7 @@ import { Box, Skeleton } from "@mui/material";
 export default function SkeletonCard() {
   return (
     <Grid>
-      {Array.from(new Array(4)).map((index) => (
+      {Array.from(new Array(4)).map((_, index) => (
         <CustomSkeletion key={index} />
       ))}
     </Grid>
@@ -15,7 +15,7 @@ export default function SkeletonCard() {
 export function CustomSkeletion() {
   return (
     <Box padding={3} sx={{ backgroundColor: "whitesmoke", height: 300 }}>
-      <Box>
+      <>
         <Skeleton animation="wave" width={150} height={50} key="title" />
         <Skeleton
           height={200}
@@ -24,7 +24,7 @@ export function CustomSkeletion() {
           key="descripition"
         />
         <Skeleton animation="wave" width={150} height={50} key="button" />
-      </Box>
+      </>
     </Box>
   );
 }
