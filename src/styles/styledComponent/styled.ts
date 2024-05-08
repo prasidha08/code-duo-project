@@ -52,7 +52,6 @@ export const Nav = styled(Box)`
   width: 100%;
   position: fixed;
   z-index: 1000;
-  height: 58px;
   background-color: ${palette.primary.main};
 `;
 
@@ -61,6 +60,7 @@ export const ImageLogoWrapper = styled(Box)`
   align-items: center;
   color: ${whitesmoke};
   width: 96%;
+  padding:10px;
   margin: auto;
 `;
 

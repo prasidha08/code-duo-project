@@ -1,5 +1,5 @@
+import SpellCard from "./SpellCard";
 import { Spell } from "../model/spell";
-import SpellCard from "./SpellDetails";
 import React, { useEffect, useState } from "react";
 import { Divider, Typography } from "@mui/material";
 import SpellDetailComponent from "./SpellCardDetail";

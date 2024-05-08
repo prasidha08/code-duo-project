@@ -1,7 +1,6 @@
 import { Box, Button } from "@mui/material";
-import { useGetSpellsByURL } from "../api/spell";
 import Typography from "@mui/material/Typography";
-import theme, { whitesmoke } from "../styles/theme";
+import { useGetSpellsByURL } from "../api/spell";
 import { CardWrapper } from "../styles/styledComponent/styled";
 
 type SpellCardProps = {

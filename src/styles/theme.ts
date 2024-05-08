@@ -10,7 +10,6 @@ let theme = createTheme({
   typography: {
     allVariants: {
       letterSpacing: 0.2,
-
     },
     h1: {
       fontSize: 20,
@@ -25,7 +24,7 @@ let theme = createTheme({
     },
     h3: {
       fontSize: 14,
-      fontWeight:"2px"
+      fontWeight: "2px",
     },
   },
   components: {
