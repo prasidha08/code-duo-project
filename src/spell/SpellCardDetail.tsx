@@ -38,17 +38,8 @@ export default function SpellDetailComponent({
   const { mutateAsync: addToFavouriteToLocalStorage } =
     useAddToFavouriteToLocalStorage();
 
-  const {
-    name,
-    desc,
-    school,
-    level,
-    range,
-    duration,
-    url,
-    index,
-    components,
-  } = data ?? {};
+  const { name, desc, school, level, range, duration, url, index, components } =
+    data ?? {};
 
   const isFavouriteSpellAdded = (id: string, storedSpells: Spell[]) => {
     return storedSpells.find(({ index }) => index === id);
@@ -98,9 +89,11 @@ export default function SpellDetailComponent({
           <Row>
             <Box>
               <Typography variant="body1">Level {level}</Typography>
+
               <Typography color="primary" variant="h2">
                 {name}
               </Typography>
+
               <Typography variant="body1">
                 {duration} duration, {range} range
               </Typography>
@@ -110,6 +103,7 @@ export default function SpellDetailComponent({
               {renderFavouriteIcon(
                 isFavouriteSpellAdded(index, favouriteSpells ?? [])
               )}
+
               <IconButton color="error" onClick={handleClose}>
                 <CloseIcon />
               </IconButton>
@@ -118,6 +112,7 @@ export default function SpellDetailComponent({
 
           <Box marginTop={2}>
             <Typography variant="body1">Component</Typography>
+
             <Stack direction="row" spacing={1}>
               {components.map((component: string) => (
                 <Chip label={component} key={component} size="small" />
@@ -127,13 +122,16 @@ export default function SpellDetailComponent({
 
           <SchoolText>
             <SchoolIcon color="primary" />
+            
             <Typography fontWeight={"bold"}>{school?.name}</Typography>
           </SchoolText>
+
           <Divider>
             <Typography color="primary" variant="h2">
               Description
             </Typography>
           </Divider>
+
           <Column gap="1.4">
             {desc?.map((description: string) => (
               <Typography component={"li"}>{description}</Typography>

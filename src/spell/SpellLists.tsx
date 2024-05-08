@@ -84,13 +84,11 @@ function CommonSpellCard({
     <Grid>
       {spells.map(({ index: spellId }, index) => {
         return (
-          <>
-            <SpellCard
-              index={spellId}
-              key={`${spellId}_${index}`}
-              handleClickOpen={handleClickOpen}
-            />
-          </>
+          <SpellCard
+            index={spellId}
+            key={`${spellId}_${index}`}
+            handleClickOpen={handleClickOpen}
+          />
         );
       })}
     </Grid>
