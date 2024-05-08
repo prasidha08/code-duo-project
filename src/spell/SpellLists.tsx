@@ -1,11 +1,10 @@
-import SpellCard from "./SpellCard";
 import { Spell } from "../model/spell";
 import React, { useEffect, useState } from "react";
-import { Divider, Skeleton, Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import SpellDetailComponent from "./SpellCardDetail";
-import { Grid } from "../styles/styledComponent/styled";
-import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
 import SkeletonCard from "../reusableComponent/SkeletonCard";
+import CommonSpellCard from "../reusableComponent/CommonSpellCard";
+import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
 
 function SpellLists({ value }: { value: string }) {
   const { data, isPending: isAllSpellsPending } = useGetAllSpells();
@@ -35,7 +34,7 @@ function SpellLists({ value }: { value: string }) {
   };
 
   if (isAllSpellsPending) {
-    return <SkeletonCard/>;
+    return <SkeletonCard />;
   }
 
   return (
@@ -74,25 +73,3 @@ function SpellLists({ value }: { value: string }) {
 }
 
 export default SpellLists;
-
-function CommonSpellCard({
-  spells,
-  handleClickOpen,
-}: {
-  spells: Spell[];
-  handleClickOpen: (spellId: string) => void;
-}) {
-  return (
-    <Grid>
-      {spells.map(({ index: spellId }, index) => {
-        return (
-          <SpellCard
-            index={spellId}
-            key={`${spellId}_${index}`}
-            handleClickOpen={handleClickOpen}
-          />
-        );
-      })}
-    </Grid>
-  );
-}
