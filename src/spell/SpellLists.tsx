@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
 import { Spell } from "../model/spell";
 import SpellCard from "./SpellDetails";
+import React, { useEffect, useState } from "react";
+import { Divider, Typography } from "@mui/material";
 import SpellDetailComponent from "./SpellCardDetail";
-import { Typography } from "@mui/material";
+import { Grid } from "../styles/styledComponent/styled";
+import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
 
 function SpellLists({ value }: { value: string }) {
-  const { data } = useGetAllSpells();
+  const { data, isPending: isAllSpellsPending } = useGetAllSpells();
   const { data: favouriteSpellsList, isPending } = useGetFavouriteSpells();
 
   const [spellIndexToOpenDialog, setStoreSpellIndexToOpenDialog] =
@@ -33,21 +34,26 @@ function SpellLists({ value }: { value: string }) {
 
   return (
     <>
-      {filteredSpellByName.length === 0 && (
+      {filteredSpellByName.length === 0 && !isAllSpellsPending && (
         <Typography align="center" variant="h1">
           No data found !
         </Typography>
       )}
-      
+
       <CommonSpellCard
         handleClickOpen={handleClickOpen}
         spells={filteredSpellByName}
       />
-
-
+      {favouriteSpellsList?.length === 0 && !isPending && (
+        <Typography align="center" variant="h1">
+          No data found !
+        </Typography>
+      )}
       {favouriteSpellsList && (
         <>
-          <Typography variant="h1">Favourite Card</Typography>
+          <Divider>
+            <Typography variant="h1">Favourite Card</Typography>
+          </Divider>
           <CommonSpellCard
             handleClickOpen={handleClickOpen}
             spells={favouriteSpellsList}
@@ -75,23 +81,18 @@ function CommonSpellCard({
   handleClickOpen: (spellId: string) => void;
 }) {
   return (
-    <div
-      style={{
-        display: "grid",
-        flexWrap: "wrap",
-        gap: 30,
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-      }}
-    >
+    <Grid>
       {spells.map(({ index: spellId }, index) => {
         return (
-          <SpellCard
-            index={spellId}
-            key={`${spellId}_${index}`}
-            handleClickOpen={handleClickOpen}
-          />
+          <>
+            <SpellCard
+              index={spellId}
+              key={`${spellId}_${index}`}
+              handleClickOpen={handleClickOpen}
+            />
+          </>
         );
       })}
-    </div>
+    </Grid>
   );
 }

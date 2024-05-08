@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Chip, Divider, Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Dialog from "@mui/material/Dialog";
 import * as React from "react";
@@ -11,6 +11,7 @@ import {
   StyledIconButton,
   CardContainer,
   Row,
+  Column,
 } from "../styles/styledComponent/styled";
 import SchoolIcon from "@mui/icons-material/School";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -36,8 +37,20 @@ export default function SpellDetailComponent({
   const { mutateAsync: addToFavouriteToLocalStorage } =
     useAddToFavouriteToLocalStorage();
 
-  const { name, desc, value, school, level, range, duration, url, index } =
-    data ?? {};
+  const {
+    name,
+    desc,
+    value,
+    school,
+    level,
+    range,
+    duration,
+    url,
+    index,
+    components,
+  } = data ?? {};
+
+  console.log("🚀 ~ data:", data);
 
   const isFavouriteSpellAdded = (id: string, storedSpells: Spell[]) => {
     return storedSpells.find(({ index }) => index === id);
@@ -56,12 +69,37 @@ export default function SpellDetailComponent({
 
     addToFavouriteToLocalStorage(favouriteSpellsToBeUpdated);
   };
+
+  function renderFavouriteIcon(isFavAdded?: Spell) {
+    if (!isFavAdded) {
+      return (
+        <StyledIconButton
+          onClick={() =>
+            addToFavourite({ index, level, name, url }, favouriteSpells ?? [])
+          }
+        >
+          <FavoriteBorderIcon />
+        </StyledIconButton>
+      );
+    }
+    return (
+      <StyledIconButton
+        onClick={() =>
+          addToFavourite({ index, level, name, url }, favouriteSpells ?? [])
+        }
+      >
+        <FavoriteIcon />
+      </StyledIconButton>
+    );
+  }
+
   return (
     <React.Fragment>
       <Dialog maxWidth="md" open={!!spellIndexToOpenDialog}>
         <CardContainer>
           <Row>
             <Box>
+              <Typography variant="body1">Level {level}</Typography>
               <Typography color="primary" fontSize="1.5em" fontWeight="bold">
                 {name}
               </Typography>
@@ -71,28 +109,8 @@ export default function SpellDetailComponent({
             </Box>
 
             <Box alignSelf="flex-start">
-              {!isFavouriteSpellAdded(index, favouriteSpells ?? []) ? (
-                <StyledIconButton
-                  onClick={() =>
-                    addToFavourite(
-                      { index, level, name, url },
-                      favouriteSpells ?? []
-                    )
-                  }
-                >
-                  <FavoriteBorderIcon />
-                </StyledIconButton>
-              ) : (
-                <StyledIconButton
-                  onClick={() =>
-                    addToFavourite(
-                      { index, level, name, url },
-                      favouriteSpells ?? []
-                    )
-                  }
-                >
-                  <FavoriteIcon />
-                </StyledIconButton>
+              {renderFavouriteIcon(
+                isFavouriteSpellAdded(index, favouriteSpells ?? [])
               )}
               <IconButton color="error" onClick={handleClose}>
                 <CloseIcon />
@@ -100,21 +118,29 @@ export default function SpellDetailComponent({
             </Box>
           </Row>
 
-          <Box display={"flex"} alignItems={"center"} gap="10px">
+          <Box marginTop={2}>
+            <Typography variant="body1">Component</Typography>
+            <Stack direction="row" spacing={1}>
+              {components.map((component: string) => (
+                <Chip label={component} key={component} size="small" />
+              ))}
+            </Stack>
+          </Box>
+
+          <Box display="flex" alignItems="center" gap="10px" marginTop={2}>
             <SchoolIcon color="primary" />
             <Typography fontWeight={"bold"}>{school?.name}</Typography>
           </Box>
-          <Box>
-            <hr />
-          </Box>
-          <Typography color="primary" fontWeight="bold">
-            Description
-          </Typography>
-          <Box display="flex" flexDirection="column" gap="20px">
+          <Divider>
+            <Typography color="primary" fontWeight="bold">
+              Description
+            </Typography>
+          </Divider>
+          <Column gap="1.4">
             {desc?.map((description: string) => (
-              <li>{description}</li>
+              <Typography component={"li"}>{description}</Typography>
             ))}
-          </Box>
+          </Column>
         </CardContainer>
       </Dialog>
     </React.Fragment>
