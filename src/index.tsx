@@ -10,7 +10,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-const queryClient = new QueryClient();
+const timeInterval = 10 * 1000 * 60; // 10 minutes
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: timeInterval,
+      refetchInterval: timeInterval,
+    },
+  },
+});
 
 root.render(
   <QueryClientProvider client={queryClient}>
