@@ -12,7 +12,7 @@ export default function Main() {
   };
 
   return (
-    <Column width="80%" margin="auto" gap="3" padding="8">
+    <Column width="80%" margin="auto" gap="3em" padding="8em">
       <Divider>
         <Typography variant="h1">Spell Card</Typography>
       </Divider>

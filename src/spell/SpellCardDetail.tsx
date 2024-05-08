@@ -132,7 +132,7 @@ export default function SpellDetailComponent({
             </Typography>
           </Divider>
 
-          <Column gap="1.4">
+          <Column gap="1.4em">
             {desc?.map((description: string) => (
               <Typography component={"li"}>{description}</Typography>
             ))}

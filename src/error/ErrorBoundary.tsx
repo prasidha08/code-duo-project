@@ -1,6 +1,6 @@
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Button, Typography } from "@mui/material";
-import { Div } from "../styles/styledComponent/styled";
+import { Column } from "../styles/styledComponent/styled";
 
 export const TYPE = {
   NOT_FOUND: "NOT_FOUND",
@@ -18,7 +18,7 @@ export default function ErrorBoundary({ fallback, type }: ErrorBoundaryProps) {
   };
 
   return (
-    <Div>
+    <Column height="258px" alignItems="center" justifyContent="center">
       <Typography variant="h1">
         {fallback ?? "Something went wrong!"}
       </Typography>
@@ -32,6 +32,6 @@ export default function ErrorBoundary({ fallback, type }: ErrorBoundaryProps) {
           ReFresh page
         </Button>
       )}
-    </Div>
+    </Column>
   );
 }

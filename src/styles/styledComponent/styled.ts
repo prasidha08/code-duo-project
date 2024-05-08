@@ -11,6 +11,10 @@ type ColumnProps = {
   margin?: string;
   width?: string;
   padding?: string;
+  alignItems?: string;
+  justifyContent?: string;
+  alignContent?: string;
+  height?: string;
 };
 
 const { palette } = theme;
@@ -34,8 +38,12 @@ export const Column = styled.div<ColumnProps>`
   flex-direction: column;
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
-  padding: ${(props) => props.padding}em;
-  gap: ${(props) => props.gap}em;
+  padding: ${(props) => props.padding};
+  gap: ${(props) => props.gap};
+  height: ${(props) => props.height};
+  align-items: ${(props) => props.alignItems};
+  align-content:${(props) => props.alignContent}
+  justify-content: ${(props) => props.justifyContent};
 `;
 
 export const StyledIconButton = styled(IconButton)`
@@ -79,16 +87,7 @@ export const CardWrapper = styled(Box)`
 
 export const SchoolText = styled(Box)`
   display: flex;
-  alignitems: "center";
+  align-items: "center";
   gap: 10px;
   margin-top: 1em;
-`;
-
-export const Div = styled.div`
-  display: flex;
-  height: 258px;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
 `;
