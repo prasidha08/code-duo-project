@@ -1,1 +1,1 @@
-export const GET_SPELL_URL = "spells"
+export const SPELL_URL = "spells";

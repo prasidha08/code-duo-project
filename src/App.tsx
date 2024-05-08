@@ -1,8 +1,12 @@
-import "./App.css";
-import { useGetAllSpells } from "./api/spell";
+import Main from "./components/Main";
+import NavBar from "./components/NavBar";
 
 function App() {
-  return <h1>Hello !</h1>;
+  return (
+    <>
+      <NavBar />
+      <Main />
+    </>
+  );
 }
-
 export default App;
