@@ -1,10 +1,10 @@
 import { Spell } from "../model/spell";
-import SpellCard from "./SpellDetails";
 import React, { useEffect, useState } from "react";
 import { Divider, Typography } from "@mui/material";
 import SpellDetailComponent from "./SpellCardDetail";
 import { Grid } from "../styles/styledComponent/styled";
 import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
+import SpellCard from "./SpellCard";
 
 function SpellLists({ value }: { value: string }) {
   const { data, isPending: isAllSpellsPending } = useGetAllSpells();
