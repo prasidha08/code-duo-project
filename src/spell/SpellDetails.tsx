@@ -25,7 +25,7 @@ export default function SpellCard({ index, handleClickOpen }: SpellCardProps) {
         },
       }}
     >
-      <Typography variant="h1">{data.name}</Typography>
+      <Typography variant="h2">{data.name}</Typography>
 
       <Box minHeight="160px">
         <Typography variant="subtitle1">
@@ -34,12 +34,8 @@ export default function SpellCard({ index, handleClickOpen }: SpellCardProps) {
       </Box>
 
       <Box>
-        <Button
-          size="small"
-          sx={{ fontWeight: "bold", fontSize: "12px", letterSpacing: 1 }}
-          onClick={() => handleClickOpen(index)}
-        >
-          Show Detail
+        <Button size="small" onClick={() => handleClickOpen(index)}>
+          <Typography variant="h3">Show Detail</Typography>
         </Button>
       </Box>
     </CardWrapper>

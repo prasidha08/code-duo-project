@@ -12,6 +12,7 @@ import {
   CardContainer,
   Row,
   Column,
+  SchoolText,
 } from "../styles/styledComponent/styled";
 import SchoolIcon from "@mui/icons-material/School";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -40,7 +41,6 @@ export default function SpellDetailComponent({
   const {
     name,
     desc,
-    value,
     school,
     level,
     range,
@@ -98,10 +98,10 @@ export default function SpellDetailComponent({
           <Row>
             <Box>
               <Typography variant="body1">Level {level}</Typography>
-              <Typography color="primary" fontSize="1.5em" fontWeight="bold">
+              <Typography color="primary" variant="h2">
                 {name}
               </Typography>
-              <Typography>
+              <Typography variant="body1">
                 {duration} duration, {range} range
               </Typography>
             </Box>
@@ -125,12 +125,12 @@ export default function SpellDetailComponent({
             </Stack>
           </Box>
 
-          <Box display="flex" alignItems="center" gap="10px" marginTop={2}>
+          <SchoolText>
             <SchoolIcon color="primary" />
             <Typography fontWeight={"bold"}>{school?.name}</Typography>
-          </Box>
+          </SchoolText>
           <Divider>
-            <Typography color="primary" fontWeight="bold">
+            <Typography color="primary" variant="h2">
               Description
             </Typography>
           </Divider>

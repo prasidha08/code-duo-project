@@ -8,6 +8,10 @@ let theme = createTheme({
   },
 
   typography: {
+    allVariants: {
+      letterSpacing: 0.2,
+
+    },
     h1: {
       fontSize: 20,
       letterSpacing: 1,
@@ -17,12 +21,18 @@ let theme = createTheme({
       fontSize: 16,
       wordSpacing: 2,
       letterSpacing: 1,
+      fontWeight: "bold",
+    },
+    h3: {
+      fontSize: 14,
+      fontWeight:"2px"
     },
   },
   components: {
     MuiButton: {
       defaultProps: {
         disableRipple: true,
+        disableElevation: true,
       },
     },
     MuiDialog: {

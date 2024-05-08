@@ -80,5 +80,11 @@ export const CardWrapper = styled(Box)`
   gap: 1em;
   padding: 2em;
   box-shadow: 1px 2px 3px ${theme.palette.primary.main};
-  
+`;
+
+export const SchoolText = styled(Box)`
+  display: flex;
+  alignitems: "center";
+  gap: 10px;
+  margin-top: 1em;
 `;
