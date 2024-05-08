@@ -1,27 +1,21 @@
 import SpellCard from "./SpellCard";
 import { Spell } from "../model/spell";
 import React, { useEffect, useState } from "react";
-import { Divider, Typography } from "@mui/material";
+import { Divider, Skeleton, Typography } from "@mui/material";
 import SpellDetailComponent from "./SpellCardDetail";
 import { Grid } from "../styles/styledComponent/styled";
 import { useGetAllSpells, useGetFavouriteSpells } from "../api/spell";
+import SkeletonCard from "../reusableComponent/SkeletonCard";
 
 function SpellLists({ value }: { value: string }) {
   const { data, isPending: isAllSpellsPending } = useGetAllSpells();
-  const { data: favouriteSpellsList, isPending } = useGetFavouriteSpells();
+
+  const { data: favouriteSpellsList } = useGetFavouriteSpells();
 
   const [spellIndexToOpenDialog, setStoreSpellIndexToOpenDialog] =
     React.useState<string>("");
 
   const [filteredSpellByName, setFilteredSpellByName] = useState<Spell[]>([]);
-
-  const handleClickOpen = (spellId: string) => {
-    setStoreSpellIndexToOpenDialog(spellId);
-  };
-
-  const handleClose = () => {
-    setStoreSpellIndexToOpenDialog("");
-  };
 
   useEffect(() => {
     if (data) {
@@ -31,6 +25,18 @@ function SpellLists({ value }: { value: string }) {
       setFilteredSpellByName(filteredResponse);
     }
   }, [data, value]);
+
+  const handleClickOpen = (spellId: string) => {
+    setStoreSpellIndexToOpenDialog(spellId);
+  };
+
+  const handleClose = () => {
+    setStoreSpellIndexToOpenDialog("");
+  };
+
+  if (isAllSpellsPending) {
+    return <SkeletonCard/>;
+  }
 
   return (
     <>
@@ -44,11 +50,7 @@ function SpellLists({ value }: { value: string }) {
         handleClickOpen={handleClickOpen}
         spells={filteredSpellByName}
       />
-      {favouriteSpellsList?.length === 0 && !isPending && (
-        <Typography align="center" variant="h1">
-          No data found !
-        </Typography>
-      )}
+
       {favouriteSpellsList && (
         <>
           <Divider>
