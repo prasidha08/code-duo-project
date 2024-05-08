@@ -50,8 +50,6 @@ export default function SpellDetailComponent({
     components,
   } = data ?? {};
 
-  console.log("🚀 ~ data:", data);
-
   const isFavouriteSpellAdded = (id: string, storedSpells: Spell[]) => {
     return storedSpells.find(({ index }) => index === id);
   };
